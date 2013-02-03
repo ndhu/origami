@@ -27,9 +27,10 @@ h1 {
     width: 175px;
     //height: 225px;
     padding: 25px;
-    margin: 15px 25px 50px;
+    margin: 15px 25px 50px; 
     cursor: pointer;
 }
+
 
 .footer-container, .footer-container a {
     font-family: Helvetica, sans;
@@ -43,6 +44,12 @@ h1 {
     line-height: 18px;
     background-color: darken($bgColor,5%);
     padding: 7px;
+}
+
+@media print {
+    .footer-container, .footer-container a {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 639px) and (min-width: 320px) {
