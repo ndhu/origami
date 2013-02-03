@@ -1,0 +1,88 @@
+@import "compass/reset";
+@import "compass/css3/transform";
+
+$bgColor: #f4f4f4;
+body {
+    background-color: $bgColor;
+}
+
+h1 {
+    font-family: Courier;
+    font-size: 18px;
+    font-weight: 10;
+    color: #4E3E47;
+    border-top: 1px solid #CFC4C9;
+    //background-color: #333;
+    padding: 10px 0px;
+}
+
+#canvas-holder {
+    margin: 100px auto;
+     width: 1680px;
+}
+
+.holder {
+    float: left;
+    //border: 1px solid #eee;
+    width: 175px;
+    //height: 225px;
+    padding: 25px;
+    margin: 15px 25px 50px;
+    cursor: pointer;
+}
+
+.footer-container, .footer-container a {
+    font-family: Helvetica, sans;
+    font-size: 12px;
+    color:  darken($bgColor,35%);
+    border-top: 1px solid  darken($bgColor,35%);
+    position: fixed;
+    bottom: 0px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+    background-color: darken($bgColor,5%);
+    padding: 7px;
+}
+
+@media screen and (max-width: 639px) and (min-width: 320px) {
+    #canvas-holder {
+        margin: 100px auto;
+        width: 260px;
+    }
+}
+
+@media screen and (max-width: 949px) and (min-width: 640px) {
+    #canvas-holder {
+        margin: 100px auto;
+        width: 825px;
+    }
+}
+
+@media screen and (max-width: 1239px) and (min-width: 950px) {
+    #canvas-holder {
+        margin: 100px auto;
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 1549px) and (min-width: 1240px) {
+    #canvas-holder {
+        margin: 100px auto;
+        width: 1125px; 
+    }
+}
+
+@media screen and (max-width: 1849px) and (min-width: 1550px) {
+    #canvas-holder {
+        margin: 100px auto;
+        width: 1420px;
+    }
+}
+
+@media screen and (min-width: 1850px) {
+    #canvas-holder {
+        margin: 100px auto;
+        width: 1680px;
+    }
+}
