@@ -63,12 +63,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 5, ../sass/main.scss */
+/* line 7, ../sass/main.scss */
 body {
   background-color: #f4f4f4;
 }
 
-/* line 9, ../sass/main.scss */
+/* line 11, ../sass/main.scss */
 h1 {
   font-family: Courier;
   font-size: 18px;
@@ -78,13 +78,20 @@ h1 {
   padding: 10px 0px;
 }
 
-/* line 19, ../sass/main.scss */
+/* line 21, ../sass/main.scss */
+h2 {
+  font-family: Helvetica, sans;
+  color: #eee;
+  font-size: 2em;
+}
+
+/* line 27, ../sass/main.scss */
 #canvas-holder {
   margin: 100px auto;
   width: 1680px;
 }
 
-/* line 24, ../sass/main.scss */
+/* line 32, ../sass/main.scss */
 .holder {
   float: left;
   width: 175px;
@@ -93,64 +100,126 @@ h1 {
   cursor: pointer;
 }
 
-/* line 35, ../sass/main.scss */
-.footer-container, .footer-container a {
+/* line 43, ../sass/main.scss */
+.footer-container {
   font-family: Helvetica, sans;
-  font-size: 12px;
-  color: #9b9b9b;
-  border-top: 1px solid #9b9b9b;
+  font-size: 14px;
+  color: #0e0d0c;
+  background-color: #A09E92;
+  border-top: 1px solid white;
   position: fixed;
   bottom: 0px;
-  height: 18px;
+  height: 32px;
   width: 100%;
   line-height: 18px;
-  background-color: #e7e7e7;
-  padding: 7px;
+}
+/* line 55, ../sass/main.scss */
+.footer-container .note {
+  display: inline-block;
+  line-height: 32px;
+  padding: 0px 10px;
+}
+/* line 60, ../sass/main.scss */
+.footer-container .note a {
+  color: black;
+}
+/* line 65, ../sass/main.scss */
+.footer-container nav {
+  margin: 0px;
+  padding: 0px;
+  float: right;
+}
+/* line 70, ../sass/main.scss */
+.footer-container nav a {
+  font-size: 17px;
+  min-width: 150px;
+  display: block;
+  float: left;
+  color: #fff;
+  background-color: #249AB1;
+  border-left: 1px solid #20889c;
+  text-decoration: none;
+  margin: 0px;
+  padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 1px #333333;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: 0.25s;
+  -moz-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+}
+/* line 90, ../sass/main.scss */
+.footer-container nav a:hover {
+  background-color: #48c2da;
 }
 
 @media print {
-  /* line 50, ../sass/main.scss */
+  /* line 100, ../sass/main.scss */
   .footer-container, .footer-container a {
     display: none;
   }
 }
 @media screen and (max-width: 639px) and (min-width: 320px) {
-  /* line 56, ../sass/main.scss */
+  /* line 106, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 260px;
   }
+
+  /* line 111, ../sass/main.scss */
+  .footer-container {
+    height: 128px;
+  }
 }
 @media screen and (max-width: 949px) and (min-width: 640px) {
-  /* line 63, ../sass/main.scss */
+  /* line 117, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 825px;
   }
+
+  /* line 122, ../sass/main.scss */
+  .footer-container {
+    height: 96px;
+  }
 }
 @media screen and (max-width: 1239px) and (min-width: 950px) {
-  /* line 70, ../sass/main.scss */
+  /* line 128, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 900px;
   }
+
+  /* line 133, ../sass/main.scss */
+  .footer-container {
+    height: 64px;
+  }
 }
 @media screen and (max-width: 1549px) and (min-width: 1240px) {
-  /* line 77, ../sass/main.scss */
+  /* line 140, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 1125px;
   }
 }
 @media screen and (max-width: 1849px) and (min-width: 1550px) {
-  /* line 84, ../sass/main.scss */
+  /* line 147, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 1420px;
   }
 }
 @media screen and (min-width: 1850px) {
-  /* line 91, ../sass/main.scss */
+  /* line 154, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 1680px;

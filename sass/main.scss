@@ -1,7 +1,9 @@
 @import "compass/reset";
-@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "compass/css3/text-shadow";
 
 $bgColor: #f4f4f4;
+
 body {
     background-color: $bgColor;
 }
@@ -14,6 +16,12 @@ h1 {
     border-top: 1px solid #CFC4C9;
     //background-color: #333;
     padding: 10px 0px;
+}
+
+h2 {
+    font-family: Helvetica, sans;
+    color: #eee;
+    font-size: 2em;
 }
 
 #canvas-holder {
@@ -32,18 +40,60 @@ h1 {
 }
 
 
-.footer-container, .footer-container a {
+.footer-container {
     font-family: Helvetica, sans;
-    font-size: 12px;
-    color:  darken($bgColor,35%);
-    border-top: 1px solid  darken($bgColor,35%);
+    font-size: 14px;
+    color:  darken(#A09E92,55%);
+    background-color: #A09E92;
+    border-top: 1px solid lighten($bgColor,35%);
     position: fixed;
     bottom: 0px;
-    height: 18px;
+    height: 32px;
     width: 100%;
     line-height: 18px;
-    background-color: darken($bgColor,5%);
-    padding: 7px;
+
+    .note {
+        display: inline-block;
+        line-height: 32px;
+        padding: 0px 10px;
+
+        a {
+            color: black;
+        }
+    }
+
+    nav {
+        margin: 0px;
+        padding: 0px;
+        float: right;
+
+         a {
+            font-size: 17px;
+            min-width: 150px;
+            display: block;
+            float: left;
+            color: #fff;
+            background-color: #249AB1;
+            border-left: 1px solid darken(#249AB1,5%);
+            text-decoration: none;
+            margin: 0px;
+            padding: 8px;
+            text-align: center;
+            text-transform: uppercase;
+
+            @include single-text-shadow(#333, 0px, 0px, 1px);
+
+            @include transition-property(background-color);
+            @include transition-timing-function(ease);
+            @include transition-duration(0.25s);
+            
+            &:hover {
+                background-color: lighten(#249AB1,15%);
+            }
+        }
+    }
+
+
 }
 
 @media print {
@@ -57,12 +107,20 @@ h1 {
         margin: 100px auto;
         width: 260px;
     }
+
+    .footer-container {
+        height: 128px;
+    }
 }
 
 @media screen and (max-width: 949px) and (min-width: 640px) {
     #canvas-holder {
         margin: 100px auto;
         width: 825px;
+    }
+
+    .footer-container {
+        height: 96px;
     }
 }
 
@@ -71,6 +129,11 @@ h1 {
         margin: 100px auto;
         width: 900px;
     }
+
+     .footer-container {
+        height: 64px;
+    }
+
 }
 
 @media screen and (max-width: 1549px) and (min-width: 1240px) {
