@@ -65,6 +65,11 @@
 	var Origami = function(paper, type) {
 		this.paper = paper;
 		this.type = type;
+		this.pathsFrom = [];
+		this.pathsTo = [];
+		this.elements = [];
+		this.animations = [];
+
 		this.createOrigami();
 	}
 
@@ -103,11 +108,7 @@
 
 		var pstr = "M" + p1.x + "," + p1.y + "L" + p2.x + "," + p2.y + "L" + p3.x + "," + p3.y + "Z";
 
-		var path = this.paper.path(pstr);
-		path.attr("fill", clr);
-		path.attr("stroke-width", 0);
-
-		return path;
+		return pstr;
 	}
 	
 	Origami.prototype.createSquare = function(clr, filled) {
@@ -134,41 +135,110 @@
 
 			var pstr = "M" + p1.x + "," + p1.y + "L" + p2.x + "," + p2.y + "L" + p3.x + "," + p3.y + "L" + p4.x + "," + p4.y + "Z";
 
-			var path = this.paper.path(pstr);
-			if (filled) {
-				path.attr("fill", clr);
-			}
-			path.attr("stroke", clr);
-			path.attr("stroke-width", 1);
+			return pstr;
+	}
 
-			return path;
+	Origami.prototype.createElement = function(p, clr, filled) {
+		var elem = this.paper.path(p);
+		if (filled) {
+			elem.attr("fill", clr);
+		}
+		elem.attr("stroke", clr);
+		elem.attr("stroke-width", 1);
+		return elem;
 	}
 
 	Origami.prototype.createOrigami = function() {
-		var clr;
+		var clr,
+			path;
 		if (this.type === "a") {
 			for (var i = 0; i < 5; i++) {
-				this.createTriangle(colors[i]);
+				path = this.pathsTo[i] = this.createTriangle();
+				this.elements[i] = this.createElement(path, colors[i], true);
 			}
 		}
 		else if (this.type === "b") {
 			clr = "#000"; // colors[Math.round(Math.random() * (colors.length-1))];
 			for (var i = 0; i < 3; i++) {
-				this.createSquare(clr);
+				path = this.pathsTo[i] = this.createSquare();
+				this.elements[i] = this.createElement(path, clr);
 			}
 		}
 		else if (this.type === "c") {
 			clr = colors[Math.round(Math.random() * (colors.length-1))];
 			for (var i = 0; i < 3; i++) {
-				this.createSquare(clr, i % 3 === 0);
+				path = this.pathsTo[i] = this.createSquare();
+				this.elements[i] = this.createElement(path, clr, i % 3 === 0);
 			}
 		}
 		else {
 			clr = colors[Math.round(Math.random() * (colors.length-1))];
 			for (var i = 0; i < 4; i++) {
-				this.createTriangle(clr);
+				path = this.pathsTo[i] = this.createTriangle();
+				this.elements[i] = this.createElement(path, clr, true);
 			}
 		}
+
+		this.pathsFrom = this.pathsTo.slice(0);
+	}
+
+	Origami.prototype.refresh = function() {
+		var at = 150,
+			ease = "ease-in-out",
+			path;
+		if (this.type === "a") {
+			for (var i = 0; i < 5; i++) {
+				path = this.pathsTo[i] = this.createTriangle();
+				this.animations[i] = Raphael.animation({'path': path}, at, ease);
+			}
+		}
+		else if (this.type === "b") {
+			for (var i = 0; i < 3; i++) {
+				path = this.pathsTo[i] = this.createSquare();
+				this.animations[i] = Raphael.animation({'path': path}, at, ease);
+			}
+		}
+		else if (this.type === "c") {
+			for (var i = 0; i < 3; i++) {
+				path = this.pathsTo[i] = this.createSquare();
+				this.animations[i] = Raphael.animation({'path': path}, at, ease);
+			}
+		}
+		else {
+			for (var i = 0; i < 4; i++) {
+				path = this.pathsTo[i] = this.createTriangle();
+				this.animations[i] = Raphael.animation({'path': path}, at, ease);
+			}
+		}
+
+		for (var i = 0; i < this.animations.length; i++) {
+			this.elements[i].animate(this.animations[i]);
+		}
+
+		this.pathsFrom = this.pathsTo.slice(0);
+	}
+
+	var Holder = function(type) {
+		this.type = type;
+		this.node = $('<div></div>')
+					.addClass("holder")
+					.append($("<h1></h1>")
+					.text(this.createTitle()));
+		this.paper = Raphael(this.node.get(0), cols * len, rows * len);
+		this.origami = new Origami(this.paper, this.type);
+	}
+
+	Holder.prototype.refresh = function() {
+		$("h1", this.node).text(this.createTitle());
+		this.origami.refresh();
+	}
+
+	Holder.prototype.createTitle = function() {
+		var t = "";
+		for (var i = 0; i < 3; i++) {
+			t += phons[Math.round(Math.random() * (phons.length-1))];
+		}
+		return t;
 	}
 
 	var Artwork = function(type, numOfTiles) {
@@ -179,37 +249,18 @@
 		
 	}
 
-	//create random title - a combination of 3 random phons
-	Artwork.prototype.createTitle = function() {
-		var t = "";
-		for (var i = 0; i < 3; i++) {
-			t += phons[Math.round(Math.random() * (phons.length-1))];
-		}
-		return t;
-	}
-
-	//creates a tile, which is in essence an origami wrapped in a holder with a click handler
-	Artwork.prototype.createHolder = function() {
-		var holder = $('<div></div>')
-					.addClass("holder")
-					.append($("<h1></h1>")
-					.text(this.createTitle()));
-		var paper = Raphael(holder.get(0), cols * len, rows * len);
-		var origami = new Origami(paper, this.type);
-		return holder;
-	}
-
 	//add a tile (origami within holder) to the container
 	Artwork.prototype.createTile = function() {
-		var holder = this.createHolder(),
+		var holder = new Holder(this.type),
 			that = this;
 		var clickHandler = function() {
-			var tile = that.createHolder();
-			$(tile).click(clickHandler);
-			$(this).replaceWith(tile);
+			holder.refresh();
+			//var tile = that.createHolder(this.type);
+			//$(tile).click(clickHandler);
+			//$(this).replaceWith(tile);
 		}
-		$(holder).click(clickHandler);
-		return holder;
+		$(holder.node).click(clickHandler);
+		return holder.node;
 	}
 
 	Artwork.prototype.createArtwork = function(type) {
