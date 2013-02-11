@@ -278,6 +278,8 @@
 	$("nav.styles a").click(function(){
 		var type = $(this).attr("data-art");
 		artwork.createArtwork(type);
+		$("nav.styles a").removeClass("selected");
+		$(this).addClass("selected");
 	});
 
 	artwork.createArtwork("a");

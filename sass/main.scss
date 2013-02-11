@@ -5,6 +5,7 @@
 $bgColor: #f4f4f4;
 
 body {
+    font-family: Helvetica, sans;
     background-color: $bgColor;
 }
 
@@ -41,7 +42,6 @@ h2 {
 
 
 .footer-container {
-    font-family: Helvetica, sans;
     font-size: 14px;
     color:  darken(#A09E92,55%);
     background-color: #A09E92;
@@ -61,84 +61,128 @@ h2 {
             color: black;
         }
     }
+}
 
-    nav {
+header {
+    top: 0px;
+    bottom: auto;
+    height: 34px;
+}
+
+
+nav {
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    width: 45%;
+
+     a {
+
+        -webkit-box-sizing: border-box; 
+        -moz-box-sizing: border-box;   
+        box-sizing: border-box;    
+
+        font-size: 17px;
+        width: 25%;
+        display: block;
+        float: left;
+        color: #fff;
+        background-color: #249AB1;
+        border-left: 1px solid darken(#249AB1,5%);
+        text-decoration: none;
         margin: 0px;
-        padding: 0px;
-        float: right;
+        padding: 15px;
+        text-align: center;
+        text-transform: uppercase;
 
-         a {
-            font-size: 17px;
-            min-width: 150px;
-            display: block;
-            float: left;
-            color: #fff;
-            background-color: #249AB1;
-            border-left: 1px solid darken(#249AB1,5%);
-            text-decoration: none;
-            margin: 0px;
-            padding: 8px;
-            text-align: center;
-            text-transform: uppercase;
+        @include single-text-shadow(#333, 0px, 0px, 1px);
 
-            @include single-text-shadow(#333, 0px, 0px, 1px);
+        @include transition-property(background-color);
+        @include transition-timing-function(ease);
+        @include transition-duration(0.25s);
+        
+        &:hover {
+            background-color: lighten(#249AB1,15%);
+        }
 
-            @include transition-property(background-color);
-            @include transition-timing-function(ease);
-            @include transition-duration(0.25s);
-            
-            &:hover {
-                background-color: lighten(#249AB1,15%);
-            }
+        &.selected {
+            background-color: darken(#FF1088,15%);
         }
     }
-
-
 }
 
 @media print {
-    .footer-container, .footer-container a {
+    header, .footer-container, .footer-container a {
         display: none;
+    }
+}
+
+@media screen and (max-width: 319px) {
+    #canvas-holder {
+        margin: 0px auto;
+        width: 300px;
+    }
+
+    nav {
+        width: 100%;
+
+        a {
+            width: 100%;
+            padding: 7px;
+        }
     }
 }
 
 @media screen and (max-width: 639px) and (min-width: 320px) {
     #canvas-holder {
-        margin: 100px auto;
+        margin: 25px auto;
         width: 260px;
     }
 
-    .footer-container {
-        height: 128px;
+    nav {
+        width: 100%;
+
+        a {
+            width: 100%;
+        }
     }
 }
 
 @media screen and (max-width: 949px) and (min-width: 640px) {
     #canvas-holder {
-        margin: 100px auto;
+        margin: 50px auto;
         width: 825px;
     }
 
-    .footer-container {
-        height: 96px;
+     nav {
+        width: 100%;
+
+        a {
+            width: 50%;
+        }
     }
+
 }
 
 @media screen and (max-width: 1239px) and (min-width: 950px) {
     #canvas-holder {
-        margin: 100px auto;
+        margin: 50px auto;
         width: 900px;
     }
 
-     .footer-container {
-        height: 64px;
+    nav {
+        width: 100%;
+
+        a {
+            width: 25%;
+        }
     }
 
 }
 
 @media screen and (max-width: 1549px) and (min-width: 1240px) {
     #canvas-holder {
-        margin: 100px auto;
+        margin: 50px auto;
         width: 1125px; 
     }
 }

@@ -65,10 +65,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 7, ../sass/main.scss */
 body {
+  font-family: Helvetica, sans;
   background-color: #f4f4f4;
 }
 
-/* line 11, ../sass/main.scss */
+/* line 12, ../sass/main.scss */
 h1 {
   font-family: Courier;
   font-size: 18px;
@@ -78,20 +79,20 @@ h1 {
   padding: 10px 0px;
 }
 
-/* line 21, ../sass/main.scss */
+/* line 22, ../sass/main.scss */
 h2 {
   font-family: Helvetica, sans;
   color: #eee;
   font-size: 2em;
 }
 
-/* line 27, ../sass/main.scss */
+/* line 28, ../sass/main.scss */
 #canvas-holder {
   margin: 100px auto;
   width: 1680px;
 }
 
-/* line 32, ../sass/main.scss */
+/* line 33, ../sass/main.scss */
 .holder {
   float: left;
   width: 175px;
@@ -100,9 +101,8 @@ h2 {
   cursor: pointer;
 }
 
-/* line 43, ../sass/main.scss */
+/* line 44, ../sass/main.scss */
 .footer-container {
-  font-family: Helvetica, sans;
   font-size: 14px;
   color: #0e0d0c;
   background-color: #A09E92;
@@ -123,16 +123,28 @@ h2 {
 .footer-container .note a {
   color: black;
 }
-/* line 65, ../sass/main.scss */
-.footer-container nav {
+
+/* line 66, ../sass/main.scss */
+header {
+  top: 0px;
+  bottom: auto;
+  height: 34px;
+}
+
+/* line 73, ../sass/main.scss */
+nav {
   margin: 0px;
   padding: 0px;
-  float: right;
+  float: left;
+  width: 45%;
 }
-/* line 70, ../sass/main.scss */
-.footer-container nav a {
+/* line 79, ../sass/main.scss */
+nav a {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 17px;
-  min-width: 150px;
+  width: 25%;
   display: block;
   float: left;
   color: #fff;
@@ -140,7 +152,7 @@ h2 {
   border-left: 1px solid #20889c;
   text-decoration: none;
   margin: 0px;
-  padding: 8px;
+  padding: 15px;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0px 0px 1px #333333;
@@ -157,69 +169,102 @@ h2 {
   -o-transition-duration: 0.25s;
   transition-duration: 0.25s;
 }
-/* line 90, ../sass/main.scss */
-.footer-container nav a:hover {
+/* line 104, ../sass/main.scss */
+nav a:hover {
   background-color: #48c2da;
+}
+/* line 108, ../sass/main.scss */
+nav a.selected {
+  background-color: #c30062;
 }
 
 @media print {
-  /* line 100, ../sass/main.scss */
-  .footer-container, .footer-container a {
+  /* line 115, ../sass/main.scss */
+  header, .footer-container, .footer-container a {
     display: none;
   }
 }
-@media screen and (max-width: 639px) and (min-width: 320px) {
-  /* line 106, ../sass/main.scss */
+@media screen and (max-width: 319px) {
+  /* line 121, ../sass/main.scss */
   #canvas-holder {
-    margin: 100px auto;
+    margin: 0px auto;
+    width: 300px;
+  }
+
+  /* line 126, ../sass/main.scss */
+  nav {
+    width: 100%;
+  }
+  /* line 129, ../sass/main.scss */
+  nav a {
+    width: 100%;
+    padding: 7px;
+  }
+}
+@media screen and (max-width: 639px) and (min-width: 320px) {
+  /* line 137, ../sass/main.scss */
+  #canvas-holder {
+    margin: 25px auto;
     width: 260px;
   }
 
-  /* line 111, ../sass/main.scss */
-  .footer-container {
-    height: 128px;
+  /* line 142, ../sass/main.scss */
+  nav {
+    width: 100%;
+  }
+  /* line 145, ../sass/main.scss */
+  nav a {
+    width: 100%;
   }
 }
 @media screen and (max-width: 949px) and (min-width: 640px) {
-  /* line 117, ../sass/main.scss */
+  /* line 152, ../sass/main.scss */
   #canvas-holder {
-    margin: 100px auto;
+    margin: 50px auto;
     width: 825px;
   }
 
-  /* line 122, ../sass/main.scss */
-  .footer-container {
-    height: 96px;
+  /* line 157, ../sass/main.scss */
+  nav {
+    width: 100%;
+  }
+  /* line 160, ../sass/main.scss */
+  nav a {
+    width: 50%;
   }
 }
 @media screen and (max-width: 1239px) and (min-width: 950px) {
-  /* line 128, ../sass/main.scss */
+  /* line 168, ../sass/main.scss */
   #canvas-holder {
-    margin: 100px auto;
+    margin: 50px auto;
     width: 900px;
   }
 
-  /* line 133, ../sass/main.scss */
-  .footer-container {
-    height: 64px;
+  /* line 173, ../sass/main.scss */
+  nav {
+    width: 100%;
+  }
+  /* line 176, ../sass/main.scss */
+  nav a {
+    width: 25%;
   }
 }
 @media screen and (max-width: 1549px) and (min-width: 1240px) {
-  /* line 140, ../sass/main.scss */
+  /* line 184, ../sass/main.scss */
   #canvas-holder {
-    margin: 100px auto;
+    margin: 50px auto;
     width: 1125px;
   }
 }
 @media screen and (max-width: 1849px) and (min-width: 1550px) {
-  /* line 147, ../sass/main.scss */
+  /* line 191, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 1420px;
   }
 }
 @media screen and (min-width: 1850px) {
-  /* line 154, ../sass/main.scss */
+  /* line 198, ../sass/main.scss */
   #canvas-holder {
     margin: 100px auto;
     width: 1680px;
